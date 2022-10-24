@@ -1,15 +1,38 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Leaderboard from './Leaderboard';
-import Play from './Layout';
 import Home from './Home';
-const Routers = () => {
+import SinglePlayer from './SinglePlayer';
+const Routers = ({
+  players,
+  setSelectedPlayer,
+  selectedPlayer,
+  FetchSelectSinglePlayer,
+}) => {
   return (
     <Routes>
       <Route exact path="/" element={<Home />}></Route>
-      <Route exact path="/leaderboard" element={<Leaderboard />}></Route>
-      {/* <Route exact path="/play" element={<Play />}></Route> */}
-      <Route exact path="/*">
+      <Route
+        path="/leaderboard"
+        element={
+          <Leaderboard
+            players={players}
+            FetchSelectSinglePlayer={FetchSelectSinglePlayer}
+            // setSelectedPlayer={setSelectedPlayer}
+          />
+        }
+      ></Route>
+      <Route
+        path="/leaderboard/:playerId"
+        element={
+          <SinglePlayer
+          // players={players}
+          // selectedPlayer={selectedPlayer}
+          // FetchSelectSinglePlayer={FetchSelectSinglePlayer}
+          />
+        }
+      />
+      <Route exact path="/*" element={<p>No Match</p>}>
         Page not found..
       </Route>
     </Routes>

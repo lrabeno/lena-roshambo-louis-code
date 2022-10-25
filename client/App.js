@@ -1,7 +1,7 @@
-import axios from 'axios';
-import Layout from './components/Layout';
-import Routers from './components/Routers';
-import React, { useState, useEffect } from 'react';
+import axios from "axios";
+import Layout from "./components/Layout";
+import Routers from "./components/Routers";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
   //for loading the data.
@@ -14,11 +14,10 @@ const App = () => {
   useEffect(() => {
     const fetchPlayers = async () => {
       setLoadingIndicator(true);
-      await axios.get('http://localhost:8080/api/players').then((res) => {
+      await axios.get("http://localhost:8080/api/players").then((res) => {
         const players = res.data;
         setPlayers(players);
         setLoadingIndicator(false);
-        console.log(players);
       });
     };
     fetchPlayers();
@@ -32,8 +31,9 @@ const App = () => {
     );
     const onePlayer = response.data;
     setSelectedPlayer(onePlayer);
-    console.log(onePlayer);
   };
+
+  console.log(selectedPlayer, "FROM SINGLE PLAYER");
 
   //to display in the UI while the data is loading.
   if (loadingIndicator) {
@@ -46,6 +46,7 @@ const App = () => {
         <Layout />
         <Routers
           players={players}
+          selectedPlayer={selectedPlayer}
           FetchSelectSinglePlayer={FetchSelectSinglePlayer}
         />
       </div>

@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Leaderboard = (props) => {
   //styling:
   const tableStyling = {
-    border: '1px solid black',
-    width: '50%',
+    border: "1px solid black",
+    width: "50%",
   };
   //state to hold single player
 
   //renderPlayers is function that will render all players in JSX.
+  console.log(props, "from leaderboard");
+
   const renderPlayers = props.players.map((player) => {
     return (
       <tr key={player.id}>
         <td
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
           onClick={() => props.FetchSelectSinglePlayer(player.id)}
         >

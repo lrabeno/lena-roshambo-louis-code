@@ -1,8 +1,8 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Leaderboard from './Leaderboard';
-import Home from './Home';
-import SinglePlayer from './SinglePlayer';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Leaderboard from "./Leaderboard";
+import Home from "./Home";
+import SinglePlayer from "./SinglePlayer";
 const Routers = ({
   players,
   setSelectedPlayer,
@@ -13,22 +13,25 @@ const Routers = ({
     <Routes>
       <Route exact path="/" element={<Home />}></Route>
       <Route
+        exact
         path="/leaderboard"
         element={
           <Leaderboard
             players={players}
+            selectedPlayer={selectedPlayer}
             FetchSelectSinglePlayer={FetchSelectSinglePlayer}
-            // setSelectedPlayer={setSelectedPlayer}
+            setSelectedPlayer={setSelectedPlayer}
           />
         }
       ></Route>
       <Route
+        exact
         path="/leaderboard/:playerId"
         element={
           <SinglePlayer
-          // players={players}
-          // selectedPlayer={selectedPlayer}
-          // FetchSelectSinglePlayer={FetchSelectSinglePlayer}
+            players={players}
+            selectedPlayer={selectedPlayer}
+            FetchSelectSinglePlayer={FetchSelectSinglePlayer}
           />
         }
       />
